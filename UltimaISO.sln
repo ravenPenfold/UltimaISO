@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltimaISO", "UltimaISO\UltimaISO.csproj", "{E607199C-6FF3-4A82-A912-792C0014332E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenDataTypes", "RavenDataHandlers\RavenDataTypes.csproj", "{ACAE6813-000D-419F-A09C-494C845395EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringEditor", "StringEditor\StringEditor.csproj", "{C4935296-09AF-4363-BC66-A903192E8DAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E607199C-6FF3-4A82-A912-792C0014332E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E607199C-6FF3-4A82-A912-792C0014332E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E607199C-6FF3-4A82-A912-792C0014332E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E607199C-6FF3-4A82-A912-792C0014332E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACAE6813-000D-419F-A09C-494C845395EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACAE6813-000D-419F-A09C-494C845395EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACAE6813-000D-419F-A09C-494C845395EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACAE6813-000D-419F-A09C-494C845395EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4935296-09AF-4363-BC66-A903192E8DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4935296-09AF-4363-BC66-A903192E8DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4935296-09AF-4363-BC66-A903192E8DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4935296-09AF-4363-BC66-A903192E8DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
