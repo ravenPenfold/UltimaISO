@@ -171,7 +171,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(alwaysShowing);
+            MaximizeBox = false;
+            MaximumSize = new Size(816, 489);
+            MinimizeBox = false;
+            MinimumSize = new Size(816, 489);
             Name = "CreateNewImageDialog";
+            ShowIcon = false;
+            ShowInTaskbar = false;
             Text = "newDiscImageWizHeader";
             Load += CreateNewImageDialog_Load;
             alwaysShowing.ResumeLayout(false);

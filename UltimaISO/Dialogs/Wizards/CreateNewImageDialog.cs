@@ -28,6 +28,8 @@ namespace UltimaISO.Dialogs.Wizards
 
         private void CreateNewImageDialog_Load(object sender, EventArgs e)
         {
+
+            // Setup Strings
             this.Text = language.getString(Language.StringIds.newDiscImageWizHeader);
             lHeader.Text = language.getString(Language.StringIds.newDiscImageWizHeader);
             lDescription.Text = language.getString(Language.StringIds.newDiscImageWizDesc);
@@ -37,35 +39,46 @@ namespace UltimaISO.Dialogs.Wizards
             lFilename.Text = language.getString(Language.StringIds.cFilename);
             lImageType.Text = language.getString(Language.StringIds.cImageType);
             lImageName.Text = language.getString(Language.StringIds.cImageName);
+
+            // Setup strings on the Combobox
+            cImageType.Items.Add(language.getString(Language.StringIds.dTypeCd));
+
+            // Init Settings
             tImageName.Text = language.getString(Language.StringIds.defaultImageName);
+            cImageType.SelectedIndex = 0;
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
             // Perform Validation
-            if (tImageName.Text == "")
+            if (tImageName.Text.Length == 0)
             {
                 MessageBox.Show(language.getString(Language.StringIds.eNoImageName), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             } else
             {
-                fileName = tImageName.Text;
+                volumeId = tImageName.Text;
             }
-            if (bFilename.Text == "")
+            if (bFilename.Text.Length == 0)
             {
-                MessageBox.Show(language.getString(Language.StringIds.eNoImageName), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(language.getString(Language.StringIds.eNoImageFile), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             else
             {
-                fileName = tImageName.Text;
+                fileName = bFilename.Text;
             }
-            if (cImageType.Text == "")
+            if (cImageType.Text.Length == 0)
             {
-                MessageBox.Show(language.getString(Language.StringIds.eNoImageName), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(language.getString(Language.StringIds.eNoImageType), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
+            else
+            {
+                type = (MiscTypes.DiscFormat)cImageType.SelectedIndex;
+            }
+            createImage = true;
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

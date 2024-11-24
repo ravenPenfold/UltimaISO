@@ -31,7 +31,8 @@ namespace RavenDataTypes
             eNoImageName = 18,
             eImageWizardErrorCaption = 19,
             eNoImageType = 20,
-            eNoImageFile = 21
+            eNoImageFile = 21,
+            dTypeCd = 22
         }
 
         FileTypes.RavenLanguage lang;
