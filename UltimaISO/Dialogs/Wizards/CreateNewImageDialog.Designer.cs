@@ -143,6 +143,7 @@
             btnCancel.TabIndex = 2;
             btnCancel.Text = "btnCancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnFinish
             // 
@@ -152,6 +153,7 @@
             btnFinish.TabIndex = 1;
             btnFinish.Text = "btnFinish";
             btnFinish.UseVisualStyleBackColor = true;
+            btnFinish.Click += btnFinish_Click;
             // 
             // lHeader
             // 

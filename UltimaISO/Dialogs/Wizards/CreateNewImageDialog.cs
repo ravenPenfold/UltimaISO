@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace UltimaISO.Dialogs.Wizards
         public string fileName;
         public MiscTypes.DiscFormat type;
         public string volumeId;
+        public bool createImage = false;
 
         private void CreateNewImageDialog_Load(object sender, EventArgs e)
         {
@@ -36,6 +38,39 @@ namespace UltimaISO.Dialogs.Wizards
             lImageType.Text = language.getString(Language.StringIds.cImageType);
             lImageName.Text = language.getString(Language.StringIds.cImageName);
             tImageName.Text = language.getString(Language.StringIds.defaultImageName);
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+            // Perform Validation
+            if (tImageName.Text == "")
+            {
+                MessageBox.Show(language.getString(Language.StringIds.eNoImageName), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            } else
+            {
+                fileName = tImageName.Text;
+            }
+            if (bFilename.Text == "")
+            {
+                MessageBox.Show(language.getString(Language.StringIds.eNoImageName), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else
+            {
+                fileName = tImageName.Text;
+            }
+            if (cImageType.Text == "")
+            {
+                MessageBox.Show(language.getString(Language.StringIds.eNoImageName), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

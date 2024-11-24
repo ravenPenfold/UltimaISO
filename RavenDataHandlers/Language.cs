@@ -27,7 +27,11 @@ namespace RavenDataTypes
             cFilename = 14,
             cImageType = 15,
             cImageName = 16,
-            defaultImageName = 17
+            defaultImageName = 17,
+            eNoImageName = 18,
+            eImageWizardErrorCaption = 19,
+            eNoImageType = 20,
+            eNoImageFile = 21
         }
 
         FileTypes.RavenLanguage lang;
