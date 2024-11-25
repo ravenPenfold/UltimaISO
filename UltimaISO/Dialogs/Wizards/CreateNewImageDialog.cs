@@ -55,7 +55,8 @@ namespace UltimaISO.Dialogs.Wizards
             {
                 MessageBox.Show(language.getString(Language.StringIds.eNoImageName), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
-            } else
+            }
+            else
             {
                 volumeId = tImageName.Text;
             }
@@ -84,6 +85,22 @@ namespace UltimaISO.Dialogs.Wizards
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void bFilename_Click(object sender, EventArgs e)
+        {
+            switch ((MiscTypes.DiscFormat)cImageType.SelectedIndex)
+            {
+                case MiscTypes.DiscFormat.Cd:
+                    openFileDialog1.Filter = "ISO Image|*.iso|All Files|*.*";
+                    break;
+            }
+            DialogResult result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                bFilename.Text = openFileDialog1.FileName;
+            }
         }
     }
 }

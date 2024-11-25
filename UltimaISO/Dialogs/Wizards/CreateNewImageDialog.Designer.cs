@@ -40,6 +40,7 @@
             btnCancel = new Button();
             btnFinish = new Button();
             lHeader = new Label();
+            openFileDialog1 = new SaveFileDialog();
             alwaysShowing.SuspendLayout();
             gMainImageProps.SuspendLayout();
             SuspendLayout();
@@ -116,6 +117,7 @@
             bFilename.TabIndex = 1;
             bFilename.Text = "defaultFilename";
             bFilename.UseVisualStyleBackColor = true;
+            bFilename.Click += bFilename_Click;
             // 
             // lFilename
             // 
@@ -201,5 +203,6 @@
         private Label lImageType;
         private Label lImageName;
         private TextBox tImageName;
+        private SaveFileDialog openFileDialog1;
     }
 }
