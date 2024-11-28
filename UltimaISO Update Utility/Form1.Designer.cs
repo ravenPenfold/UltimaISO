@@ -34,31 +34,33 @@
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(12, 27);
+            progressBar1.Location = new Point(14, 36);
+            progressBar1.Margin = new Padding(3, 4, 3, 4);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(270, 23);
+            progressBar1.Size = new Size(309, 31);
             progressBar1.TabIndex = 0;
             // 
             // lText
             // 
             lText.AutoSize = true;
-            lText.Location = new Point(12, 9);
+            lText.Location = new Point(14, 12);
             lText.Name = "lText";
-            lText.Size = new Size(176, 15);
+            lText.Size = new Size(221, 20);
             lText.TabIndex = 1;
             lText.Text = "Please wait while we copy files...";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(294, 58);
+            ClientSize = new Size(334, 77);
             Controls.Add(lText);
             Controls.Add(progressBar1);
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
-            MaximumSize = new Size(310, 97);
+            MaximumSize = new Size(352, 124);
             MinimizeBox = false;
-            MinimumSize = new Size(310, 97);
+            MinimumSize = new Size(352, 124);
             Name = "Form1";
             ShowIcon = false;
             ShowInTaskbar = false;

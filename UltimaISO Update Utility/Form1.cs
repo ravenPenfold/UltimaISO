@@ -16,11 +16,24 @@ namespace UltimaISO_Update_Utility
 
         string outputArea;
         string ver = "0.1-beta1";
+
+        private void errorDialog(Installer.InstallStage i, Exception e)
+        {
+            DialogResult r = MessageBox.Show("An error occurred while installing\nSetup Stage: " + i + "\nException Message: " + e.Message, "Installation Error", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+            if (r == DialogResult.OK) {
+                Installer installer = new Installer("UltimaISO", "0.1-beta1", "x64", outputArea);
+                installer.removeInstall();
+                installer.cleanUp();
+                Application.Exit();
+            }
+        }
         private void Form1_Shown(object sender, EventArgs e)
         {
             lText.Text = "Please wait...";
             progressBar1.Style |= ProgressBarStyle.Marquee;
-            progressBar1.Maximum = 3;
+            progressBar1.Maximum = 5;
+
+            Installer installer = new Installer("UltimaISO", "0.1-beta1", "x64", outputArea);
             // Init
 
 
@@ -33,55 +46,88 @@ namespace UltimaISO_Update_Utility
             lText.Text = "Downloading UltimaISO version '" + ver + "'...";
             progressBar1.Style = ProgressBarStyle.Marquee;
 
-            WebClient wc = new WebClient();
-            wc.DownloadFile("https://github.com/ravenPenfold/UltimaISO/releases/download/" + ver + "/UltimaISO-Windows-x64.zip", SpecialDirectories.Temp + "UltimaISO.zip");
+            ZipArchive z = null;
 
+            try
+            {
+                z = new ZipArchive(System.IO.File.OpenRead(installer.downloadZip()));
+            } catch (Exception ex)
+            {
+                errorDialog(Installer.InstallStage.downloadingZip, ex);
+            }
 
-            // Get installation location
+            // 1 - Get installation location
 
             lText.Text = "Installing...";
-            ZipArchive z = new ZipArchive(System.IO.File.OpenRead(SpecialDirectories.Temp + "UltimaISO.zip"));
+            
             progressBar1.Style = ProgressBarStyle.Blocks;
             progressBar1.Value = 0;
 
             // Copy files
-            Directory.Delete(outputArea, true);
-            Directory.CreateDirectory(outputArea);
-            z.ExtractToDirectory(outputArea);
+            try
+            {
+                installer.installApp(z);
+            }
+            catch (Exception ex)
+            {
+                errorDialog(Installer.InstallStage.installingFromZip, ex);
+            }
 
-            // Update Registry
+            // 2 - Update Registry
             lText.Text = "Updating Registry...";
             progressBar1.Style |= ProgressBarStyle.Blocks;
             progressBar1.Value++;
+            try { 
+                installer.updateRegistry();
+            }
+            catch (Exception ex)
+            {
+                errorDialog(Installer.InstallStage.updatingReg, ex);
+            }
 
-            Application.Exit();
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\RavenPenfold\\UltimaISO", "version", ver);
-            Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\RavenPenfold\\UltimaISO", "installFolder", outputArea);
 
-            // Add Shortcuts
+            // 3 - Add Setup
+            lText.Text = "Creating Uninstaller...";
+            progressBar1.Style |= ProgressBarStyle.Blocks;
+            progressBar1.Value++;
+            try { 
+                installer.createUninstaller();
+            }
+            catch (Exception ex)
+            {
+                errorDialog(Installer.InstallStage.copyingUninstaller, ex);
+            }
+
+            // 4 - Add Shortcuts
             lText.Text = "Adding Shortcuts...";
             progressBar1.Style |= ProgressBarStyle.Blocks;
             progressBar1.Value++;
-            string startmenuPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + "\\UltimaISO";
-            if (!Directory.Exists(startmenuPath))
-                Directory.CreateDirectory(startmenuPath);
+            try { 
+                installer.createAppShortcut();
+            }
+            catch (Exception ex)
+            {
+                errorDialog(Installer.InstallStage.appShortcutCreation, ex);
+            }
+            try
+            {
+                installer.createUninstallShortcut();
+            }
+            catch (Exception ex)
+            {
+                errorDialog(Installer.InstallStage.uninstallShortcutCreation, ex);
+            }
 
-            string shortcutName = startmenuPath + "\\UltimaISO.lnk";
-
-            WshShell shell = new WshShell();
-
-            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutName);
-
-            shortcut.Description = "Open UltimaISO";
-            shortcut.TargetPath = outputArea + "\\UltimaISO.exe";
-            shortcut.Save();
-
-            lText.Text = "Cleaning up...";
+    lText.Text = "Cleaning up...";
             progressBar1.Style = ProgressBarStyle.Marquee;
             progressBar1.Value++;
-
-            System.IO.File.Delete(SpecialDirectories.Temp + "UltimaISO.zip");
-
+            try { 
+                installer.cleanUp();
+            }
+            catch (Exception ex)
+            {
+                errorDialog(Installer.InstallStage.cleanupInstaller, ex);
+            }
             Application.Exit();
         }
 

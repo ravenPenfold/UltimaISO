@@ -13,6 +13,10 @@ namespace UltimaISO
         MiscTypes.DiscFormat discFormat;
         string volumeId;
 
+        // Runtime
+        string path;
+        CDReader cd;
+
         // FileLists
         List<string> inFiles = new List<string>();
         List<string> outFiles = new List<string>();
@@ -20,26 +24,11 @@ namespace UltimaISO
         // Functions used during Runtime
         private void loadIso()
         {
-            inFiles.Clear();
-            outFiles.Clear();
+            cd = new CDReader(File.OpenRead(fileName), true);
+            path = cd.Root.FullName;
+            updateScreen(cd);
         }
 
-        private void loadIso(string fileName)
-        {
-            CDBuilder cdb = new CDBuilder();
-            inFiles.Clear();
-            outFiles.Clear();
-
-            using (FileStream s = File.Open(fileName, FileMode.Open))
-            {
-                CDReader cd = new CDReader(s, true);
-
-                foreach (string d in cd.GetDirectories("/"))
-                {
-
-                }
-            }
-        }
         public appMain(Language lang)
         {
             InitializeComponent();
@@ -76,14 +65,89 @@ namespace UltimaISO
 
             createNewImageDialog.ShowDialog();
 
-            if(createNewImageDialog.createImage == true)
+            if (createNewImageDialog.createImage == true)
             {
                 fileName = createNewImageDialog.fileName;
                 volumeId = createNewImageDialog.volumeId;
                 discFormat = createNewImageDialog.type;
+
+                CDBuilder b = new CDBuilder();
+                b.UseJoliet = true;
+                b.VolumeIdentifier = volumeId;
+                b.Build(fileName);
+
+                loadIso();
+            }
+        }
+
+        public string updateDir(bool goBack, string add)
+        {
+            string s = path;
+
+            if (goBack == true)
+            {
+                s = "";
+                var pathSplit = path.Split("\\");
+
+                for (int i = 0; i < pathSplit.Length - 1; i++)
+                {
+                    s = s + pathSplit[i] + "\\";
+                }
+                return s;
+            }
+            else
+            {
+                s = s + "\\" + add;
+                return s;
+            }
+        }
+
+        public void updateScreen(CDReader reader)
+        {
+            listView1.Clear();
+
+            if (reader.DirectoryExists(path) == true)
+            {
+                foreach (string d in reader.GetDirectories(path))
+                {
+                    string n = d.Split("\\").Last();
+                    listView1.Items.Add(n, 0);
+                }
+                foreach (string d in reader.GetFiles(path))
+                {
+                    string n = d.Split("\\").Last();
+                    listView1.Items.Add(n, 1);
+                }
             }
 
-            
+            tCurrentDir.Text = path;
+        }
+
+        private void openDiscImageisoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult r = openIso.ShowDialog();
+
+            if (r == DialogResult.OK)
+            {
+                fileName = openIso.FileName;
+                loadIso();
+            }
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems[0].ImageIndex == 0)
+            {
+                path = updateDir(false, listView1.SelectedItems[0].Text);
+                updateScreen(cd);
+            }
+        }
+
+        private void bUpOneFolder_Click(object sender, EventArgs e)
+        {
+            path = updateDir(true, "");
+            updateScreen(cd);
         }
     }
+
 }
