@@ -1,2 +1,1 @@
-# Dummy page
-please bear with :P
+Test Frontpage
