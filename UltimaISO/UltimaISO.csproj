@@ -7,7 +7,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject></StartupObject>
+    <ApplicationIcon>ultimaiso.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ultimaiso.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DiscUtils" Version="0.16.13" />

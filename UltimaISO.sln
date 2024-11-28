@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lang", "lang", "{9A82A039-E
 		UltimaISO\bin\Debug\net8.0-windows\res\lang\en_GB.rstr = UltimaISO\bin\Debug\net8.0-windows\res\lang\en_GB.rstr
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltimaISO Setup", "UltimaISO Update Utility\UltimaISO Setup.csproj", "{7F8E51B0-B94C-4843-B5FA-8C29AF818FD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C4935296-09AF-4363-BC66-A903192E8DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4935296-09AF-4363-BC66-A903192E8DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4935296-09AF-4363-BC66-A903192E8DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F8E51B0-B94C-4843-B5FA-8C29AF818FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F8E51B0-B94C-4843-B5FA-8C29AF818FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F8E51B0-B94C-4843-B5FA-8C29AF818FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F8E51B0-B94C-4843-B5FA-8C29AF818FD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

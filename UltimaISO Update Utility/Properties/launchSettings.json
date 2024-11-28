@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UltimaISO Update Utility": {
+      "commandName": "Project",
+      "commandLineArgs": "/c"
+    }
+  }
+}

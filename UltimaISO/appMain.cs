@@ -1,4 +1,5 @@
 using DiscUtils.Iso9660;
+using Microsoft.Win32;
 using RavenDataTypes;
 using System.Security.Cryptography.X509Certificates;
 using UltimaISO.Dialogs;

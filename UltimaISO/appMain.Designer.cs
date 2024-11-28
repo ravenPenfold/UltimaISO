@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(appMain));
             menuStrip1 = new MenuStrip();
             fileCtxMenuToolStripMenuItem = new ToolStripMenuItem();
             newImageBtnToolStripMenuItem = new ToolStripMenuItem();
@@ -59,43 +60,43 @@
             // newImageBtnToolStripMenuItem
             // 
             newImageBtnToolStripMenuItem.Name = "newImageBtnToolStripMenuItem";
-            newImageBtnToolStripMenuItem.Size = new Size(180, 22);
+            newImageBtnToolStripMenuItem.Size = new Size(178, 22);
             newImageBtnToolStripMenuItem.Text = "newImageBtn";
             newImageBtnToolStripMenuItem.Click += newImageBtnToolStripMenuItem_Click;
             // 
             // openImageBtnToolStripMenuItem
             // 
             openImageBtnToolStripMenuItem.Name = "openImageBtnToolStripMenuItem";
-            openImageBtnToolStripMenuItem.Size = new Size(180, 22);
+            openImageBtnToolStripMenuItem.Size = new Size(178, 22);
             openImageBtnToolStripMenuItem.Text = "openImageBtn";
             // 
             // saveImageBtnToolStripMenuItem
             // 
             saveImageBtnToolStripMenuItem.Name = "saveImageBtnToolStripMenuItem";
-            saveImageBtnToolStripMenuItem.Size = new Size(180, 22);
+            saveImageBtnToolStripMenuItem.Size = new Size(178, 22);
             saveImageBtnToolStripMenuItem.Text = "saveImageBtn";
             // 
             // saveImageAsBtnToolStripMenuItem
             // 
             saveImageAsBtnToolStripMenuItem.Name = "saveImageAsBtnToolStripMenuItem";
-            saveImageAsBtnToolStripMenuItem.Size = new Size(180, 22);
+            saveImageAsBtnToolStripMenuItem.Size = new Size(178, 22);
             saveImageAsBtnToolStripMenuItem.Text = "saveImageAsBtn";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(175, 6);
             // 
             // imagePropertiesBtnToolStripMenuItem
             // 
             imagePropertiesBtnToolStripMenuItem.Name = "imagePropertiesBtnToolStripMenuItem";
-            imagePropertiesBtnToolStripMenuItem.Size = new Size(180, 22);
+            imagePropertiesBtnToolStripMenuItem.Size = new Size(178, 22);
             imagePropertiesBtnToolStripMenuItem.Text = "imagePropertiesBtn";
             // 
             // exitBtnToolStripMenuItem
             // 
             exitBtnToolStripMenuItem.Name = "exitBtnToolStripMenuItem";
-            exitBtnToolStripMenuItem.Size = new Size(180, 22);
+            exitBtnToolStripMenuItem.Size = new Size(178, 22);
             exitBtnToolStripMenuItem.Text = "exitBtn";
             exitBtnToolStripMenuItem.Click += exitBtnToolStripMenuItem_Click;
             // 
@@ -105,6 +106,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "appMain";
             Text = "appTitle";
