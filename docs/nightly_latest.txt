@@ -1,2 +1,2 @@
-version=0.1
-versionUrl=https://github.com/ravenPenfold/UltimaISO/
+0.1
+https://github.com/ravenPenfold/UltimaISO/releases/download/0.1-beta1/Local.Install.ZIP.zip
