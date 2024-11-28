@@ -1,4 +1,4 @@
-remote_theme: cayman
+theme: cayman
 title: UltimaISO
 description: An Disc Image Editor built in C#.net and DiscUtils
 show_downloads: true
