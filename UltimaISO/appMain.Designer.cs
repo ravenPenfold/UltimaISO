@@ -46,8 +46,12 @@
             toolStrip1 = new ToolStrip();
             bUpOneFolder = new ToolStripButton();
             tCurrentDir = new ToolStripTextBox();
+            statusStrip1 = new StatusStrip();
+            lStatus = new ToolStripStatusLabel();
+            pBar = new ToolStripProgressBar();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -125,7 +129,7 @@
             listView1.LargeImageList = iIcons;
             listView1.Location = new Point(0, 57);
             listView1.Name = "listView1";
-            listView1.Size = new Size(914, 543);
+            listView1.Size = new Size(914, 517);
             listView1.StateImageList = iIcons;
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
@@ -156,17 +160,40 @@
             // 
             // bUpOneFolder
             // 
+            bUpOneFolder.DisplayStyle = ToolStripItemDisplayStyle.Image;
             bUpOneFolder.Image = (Image)resources.GetObject("bUpOneFolder.Image");
             bUpOneFolder.ImageTransparentColor = Color.Magenta;
             bUpOneFolder.Name = "bUpOneFolder";
-            bUpOneFolder.Size = new Size(64, 24);
-            bUpOneFolder.Text = "Back";
+            bUpOneFolder.Size = new Size(29, 24);
+            bUpOneFolder.Text = "Up One Folder";
             bUpOneFolder.Click += bUpOneFolder_Click;
             // 
             // tCurrentDir
             // 
             tCurrentDir.Name = "tCurrentDir";
             tCurrentDir.Size = new Size(500, 27);
+            tCurrentDir.KeyDown += tCurrentDir_KeyDown;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.ImageScalingSize = new Size(20, 20);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { pBar, lStatus });
+            statusStrip1.Location = new Point(0, 574);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(914, 26);
+            statusStrip1.TabIndex = 3;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // lStatus
+            // 
+            lStatus.Name = "lStatus";
+            lStatus.Size = new Size(151, 20);
+            lStatus.Text = "toolStripStatusLabel1";
+            // 
+            // pBar
+            // 
+            pBar.Name = "pBar";
+            pBar.Size = new Size(100, 18);
             // 
             // appMain
             // 
@@ -174,6 +201,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
             Controls.Add(listView1);
+            Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -186,6 +214,8 @@
             menuStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -208,5 +238,8 @@
         private ToolStrip toolStrip1;
         private ToolStripButton bUpOneFolder;
         private ToolStripTextBox tCurrentDir;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel lStatus;
+        private ToolStripProgressBar pBar;
     }
 }

@@ -15,6 +15,8 @@ namespace UltimaISO
             ApplicationConfiguration.Initialize();
             Language language = new Language(Application.StartupPath.ToString() + "res\\lang\\en_GB.rstr");
             Application.Run(new appMain(language));
+
+            
         }
     }
 }

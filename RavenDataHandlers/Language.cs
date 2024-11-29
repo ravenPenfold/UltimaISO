@@ -32,7 +32,13 @@ namespace RavenDataTypes
             eImageWizardErrorCaption = 19,
             eNoImageType = 20,
             eNoImageFile = 21,
-            dTypeCd = 22
+            dTypeCd = 22,
+            openIsoImage = 23,
+            sbLoadIso = 24,
+            sbLoadDirectories = 25,
+            sbLoadFiles = 26,
+            sbFinished = 27,
+            sbUpdatePath = 28
         }
 
         FileTypes.RavenLanguage lang;

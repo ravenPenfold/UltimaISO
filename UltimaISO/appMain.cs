@@ -1,8 +1,6 @@
 using DiscUtils.Iso9660;
-using Microsoft.Win32;
+using RavenBrowser;
 using RavenDataTypes;
-using System.Security.Cryptography.X509Certificates;
-using UltimaISO.Dialogs;
 
 namespace UltimaISO
 {
@@ -14,19 +12,22 @@ namespace UltimaISO
         string volumeId;
 
         // Runtime
-        string path;
+        string path = "";
         CDReader cd;
 
         // FileLists
         List<string> inFiles = new List<string>();
         List<string> outFiles = new List<string>();
 
+        DiscImageCD cD;
+
         // Functions used during Runtime
         private void loadIso()
         {
             cd = new CDReader(File.OpenRead(fileName), true);
-            path = cd.Root.FullName;
-            updateScreen(cd);
+            path = "";
+            cD = new DiscImageCD(fileName);
+            updateScreen(cd, "\\");
         }
 
         public appMain(Language lang)
@@ -52,6 +53,7 @@ namespace UltimaISO
             saveImageAsBtnToolStripMenuItem.Text = language.getString(Language.StringIds.saveImageAsBtn);
             imagePropertiesBtnToolStripMenuItem.Text = language.getString(Language.StringIds.imagePropertiesBtn);
             exitBtnToolStripMenuItem.Text = language.getString(Language.StringIds.exitBtn);
+            openDiscImageisoToolStripMenuItem.Text = language.getString(Language.StringIds.openIsoImage);
         }
 
         private void exitBtnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,47 +82,65 @@ namespace UltimaISO
             }
         }
 
-        public string updateDir(bool goBack, string add)
+
+        public void updateScreen(CDReader reader, string nPath)
         {
-            string s = path;
+            // Status Setup
+            pBar.Maximum = 3;
+            pBar.Value = 0;
+            pBar.Visible = true;
+            lStatus.Text = language.getString(Language.StringIds.sbUpdatePath);
+            listView1.Clear(); // Clear ListView
 
-            if (goBack == true)
-            {
-                s = "";
-                var pathSplit = path.Split("\\");
+            // Update Dirs & Path Text
+            path = cD.updateDir(nPath, path);
+            tCurrentDir.Text = path;
 
-                for (int i = 0; i < pathSplit.Length - 1; i++)
-                {
-                    s = s + pathSplit[i] + "\\";
-                }
-                return s;
-            }
-            else
+            // Update Directories
+            pBar.Value++;
+            lStatus.Text = language.getString(Language.StringIds.sbLoadDirectories);
+            foreach (string d in cD.getDirectories(path))
             {
-                s = s + "\\" + add;
-                return s;
+                string n = d.Split("\\").Last();
+                listView1.Items.Add(n, 0);
             }
+
+            // Update File List
+            pBar.Value++;
+            lStatus.Text = language.getString(Language.StringIds.sbLoadFiles);
+            foreach (string d in cD.getFiles(path))
+            {
+                string n = d.Split("\\").Last();
+                listView1.Items.Add(n, 1);
+            }
+
+            pBar.Visible = false;
+            lStatus.Text = language.getString(Language.StringIds.sbFinished);
         }
 
         public void updateScreen(CDReader reader)
         {
-            listView1.Clear();
-
-            if (reader.DirectoryExists(path) == true)
-            {
-                foreach (string d in reader.GetDirectories(path))
-                {
-                    string n = d.Split("\\").Last();
-                    listView1.Items.Add(n, 0);
-                }
-                foreach (string d in reader.GetFiles(path))
-                {
-                    string n = d.Split("\\").Last();
-                    listView1.Items.Add(n, 1);
-                }
-            }
-
+            // Status Setup
+            pBar.Maximum = 3;
+            pBar.Value = 0;
+            pBar.Visible = true;
+            lStatus.Text = language.getString(Language.StringIds.sbUpdatePath);
+            listView1.Clear(); // Clear ListView
             tCurrentDir.Text = path;
+
+            // Update Directories
+            pBar.Value++;
+            lStatus.Text = language.getString(Language.StringIds.sbUpdatePath);
+            foreach (string d in cD.getDirectories(path))
+            {
+                string n = d.Split("\\").Last();
+                listView1.Items.Add(n, 0);
+            }
+            foreach (string d in cD.getFiles(path))
+            {
+                string n = d.Split("\\").Last();
+                listView1.Items.Add(n, 1);
+            }
         }
 
         private void openDiscImageisoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,15 +158,22 @@ namespace UltimaISO
         {
             if (listView1.SelectedItems[0].ImageIndex == 0)
             {
-                path = updateDir(false, listView1.SelectedItems[0].Text);
-                updateScreen(cd);
+                updateScreen(cd, listView1.SelectedItems[0].Text);
             }
         }
 
         private void bUpOneFolder_Click(object sender, EventArgs e)
         {
-            path = updateDir(true, "");
-            updateScreen(cd);
+            updateScreen(cd, "..");
+        }
+
+        private void tCurrentDir_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                path = tCurrentDir.Text;
+                updateScreen(cd);
+            }
         }
     }
 
