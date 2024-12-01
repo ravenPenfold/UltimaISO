@@ -40,6 +40,9 @@
             toolStripSeparator1 = new ToolStripSeparator();
             imagePropertiesBtnToolStripMenuItem = new ToolStripMenuItem();
             exitBtnToolStripMenuItem = new ToolStripMenuItem();
+            helpToolStripMenuItem = new ToolStripMenuItem();
+            aboutUltimaISOToolStripMenuItem = new ToolStripMenuItem();
+            debugToolStripMenuItem = new ToolStripMenuItem();
             listView1 = new ListView();
             iIcons = new ImageList(components);
             openIso = new OpenFileDialog();
@@ -47,8 +50,8 @@
             bUpOneFolder = new ToolStripButton();
             tCurrentDir = new ToolStripTextBox();
             statusStrip1 = new StatusStrip();
-            lStatus = new ToolStripStatusLabel();
             pBar = new ToolStripProgressBar();
+            lStatus = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -57,11 +60,10 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileCtxMenuToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileCtxMenuToolStripMenuItem, helpToolStripMenuItem, debugToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(914, 30);
+            menuStrip1.Size = new Size(800, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -69,13 +71,13 @@
             // 
             fileCtxMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newImageBtnToolStripMenuItem, openImageBtnToolStripMenuItem, saveImageBtnToolStripMenuItem, saveImageAsBtnToolStripMenuItem, toolStripSeparator1, imagePropertiesBtnToolStripMenuItem, exitBtnToolStripMenuItem });
             fileCtxMenuToolStripMenuItem.Name = "fileCtxMenuToolStripMenuItem";
-            fileCtxMenuToolStripMenuItem.Size = new Size(102, 24);
+            fileCtxMenuToolStripMenuItem.Size = new Size(83, 20);
             fileCtxMenuToolStripMenuItem.Text = "fileCtxMenu";
             // 
             // newImageBtnToolStripMenuItem
             // 
             newImageBtnToolStripMenuItem.Name = "newImageBtnToolStripMenuItem";
-            newImageBtnToolStripMenuItem.Size = new Size(223, 26);
+            newImageBtnToolStripMenuItem.Size = new Size(178, 22);
             newImageBtnToolStripMenuItem.Text = "newImageBtn";
             newImageBtnToolStripMenuItem.Click += newImageBtnToolStripMenuItem_Click;
             // 
@@ -83,53 +85,75 @@
             // 
             openImageBtnToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openDiscImageisoToolStripMenuItem });
             openImageBtnToolStripMenuItem.Name = "openImageBtnToolStripMenuItem";
-            openImageBtnToolStripMenuItem.Size = new Size(223, 26);
+            openImageBtnToolStripMenuItem.Size = new Size(178, 22);
             openImageBtnToolStripMenuItem.Text = "openImageBtn";
             // 
             // openDiscImageisoToolStripMenuItem
             // 
             openDiscImageisoToolStripMenuItem.Name = "openDiscImageisoToolStripMenuItem";
-            openDiscImageisoToolStripMenuItem.Size = new Size(248, 26);
+            openDiscImageisoToolStripMenuItem.Size = new Size(198, 22);
             openDiscImageisoToolStripMenuItem.Text = "Open Disc Image (*.iso)";
             openDiscImageisoToolStripMenuItem.Click += openDiscImageisoToolStripMenuItem_Click;
             // 
             // saveImageBtnToolStripMenuItem
             // 
             saveImageBtnToolStripMenuItem.Name = "saveImageBtnToolStripMenuItem";
-            saveImageBtnToolStripMenuItem.Size = new Size(223, 26);
+            saveImageBtnToolStripMenuItem.Size = new Size(178, 22);
             saveImageBtnToolStripMenuItem.Text = "saveImageBtn";
             // 
             // saveImageAsBtnToolStripMenuItem
             // 
             saveImageAsBtnToolStripMenuItem.Name = "saveImageAsBtnToolStripMenuItem";
-            saveImageAsBtnToolStripMenuItem.Size = new Size(223, 26);
+            saveImageAsBtnToolStripMenuItem.Size = new Size(178, 22);
             saveImageAsBtnToolStripMenuItem.Text = "saveImageAsBtn";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(220, 6);
+            toolStripSeparator1.Size = new Size(175, 6);
             // 
             // imagePropertiesBtnToolStripMenuItem
             // 
             imagePropertiesBtnToolStripMenuItem.Name = "imagePropertiesBtnToolStripMenuItem";
-            imagePropertiesBtnToolStripMenuItem.Size = new Size(223, 26);
+            imagePropertiesBtnToolStripMenuItem.Size = new Size(178, 22);
             imagePropertiesBtnToolStripMenuItem.Text = "imagePropertiesBtn";
             // 
             // exitBtnToolStripMenuItem
             // 
             exitBtnToolStripMenuItem.Name = "exitBtnToolStripMenuItem";
-            exitBtnToolStripMenuItem.Size = new Size(223, 26);
+            exitBtnToolStripMenuItem.Size = new Size(178, 22);
             exitBtnToolStripMenuItem.Text = "exitBtn";
             exitBtnToolStripMenuItem.Click += exitBtnToolStripMenuItem_Click;
+            // 
+            // helpToolStripMenuItem
+            // 
+            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutUltimaISOToolStripMenuItem });
+            helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            helpToolStripMenuItem.Size = new Size(44, 20);
+            helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutUltimaISOToolStripMenuItem
+            // 
+            aboutUltimaISOToolStripMenuItem.Name = "aboutUltimaISOToolStripMenuItem";
+            aboutUltimaISOToolStripMenuItem.Size = new Size(163, 22);
+            aboutUltimaISOToolStripMenuItem.Text = "About UltimaISO";
+            aboutUltimaISOToolStripMenuItem.Click += aboutUltimaISOToolStripMenuItem_Click;
+            // 
+            // debugToolStripMenuItem
+            // 
+            debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            debugToolStripMenuItem.Size = new Size(54, 20);
+            debugToolStripMenuItem.Text = "Debug";
+            debugToolStripMenuItem.Click += debugToolStripMenuItem_Click;
             // 
             // listView1
             // 
             listView1.Dock = DockStyle.Fill;
             listView1.LargeImageList = iIcons;
-            listView1.Location = new Point(0, 57);
+            listView1.Location = new Point(0, 51);
+            listView1.Margin = new Padding(3, 2, 3, 2);
             listView1.Name = "listView1";
-            listView1.Size = new Size(914, 517);
+            listView1.Size = new Size(800, 377);
             listView1.StateImageList = iIcons;
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
@@ -152,9 +176,9 @@
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { bUpOneFolder, tCurrentDir });
-            toolStrip1.Location = new Point(0, 30);
+            toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(914, 27);
+            toolStrip1.Size = new Size(800, 27);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -164,49 +188,49 @@
             bUpOneFolder.Image = (Image)resources.GetObject("bUpOneFolder.Image");
             bUpOneFolder.ImageTransparentColor = Color.Magenta;
             bUpOneFolder.Name = "bUpOneFolder";
-            bUpOneFolder.Size = new Size(29, 24);
+            bUpOneFolder.Size = new Size(24, 24);
             bUpOneFolder.Text = "Up One Folder";
             bUpOneFolder.Click += bUpOneFolder_Click;
             // 
             // tCurrentDir
             // 
             tCurrentDir.Name = "tCurrentDir";
-            tCurrentDir.Size = new Size(500, 27);
+            tCurrentDir.Size = new Size(438, 27);
             tCurrentDir.KeyDown += tCurrentDir_KeyDown;
             // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { pBar, lStatus });
-            statusStrip1.Location = new Point(0, 574);
+            statusStrip1.Location = new Point(0, 428);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(914, 26);
+            statusStrip1.Padding = new Padding(1, 0, 12, 0);
+            statusStrip1.Size = new Size(800, 22);
             statusStrip1.TabIndex = 3;
             statusStrip1.Text = "statusStrip1";
-            // 
-            // lStatus
-            // 
-            lStatus.Name = "lStatus";
-            lStatus.Size = new Size(151, 20);
-            lStatus.Text = "toolStripStatusLabel1";
             // 
             // pBar
             // 
             pBar.Name = "pBar";
-            pBar.Size = new Size(100, 18);
+            pBar.Size = new Size(88, 16);
+            // 
+            // lStatus
+            // 
+            lStatus.Name = "lStatus";
+            lStatus.Size = new Size(118, 17);
+            lStatus.Text = "toolStripStatusLabel1";
             // 
             // appMain
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(listView1);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "appMain";
             Text = "appTitle";
             Load += appMain_Load;
@@ -241,5 +265,8 @@
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel lStatus;
         private ToolStripProgressBar pBar;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem aboutUltimaISOToolStripMenuItem;
+        private ToolStripMenuItem debugToolStripMenuItem;
     }
 }

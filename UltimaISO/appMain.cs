@@ -1,11 +1,14 @@
 using DiscUtils.Iso9660;
 using RavenBrowser;
 using RavenDataTypes;
+using UltimaISO.Dialogs;
 
 namespace UltimaISO
 {
     public partial class appMain : Form
     {
+        string version;
+
         Language language;
         string fileName;
         MiscTypes.DiscFormat discFormat;
@@ -45,6 +48,22 @@ namespace UltimaISO
 
         private void appMain_Load(object sender, EventArgs e)
         {
+            StreamReader sr = new StreamReader(Application.StartupPath + "buildinfo.dat");
+            version = sr.ReadToEnd(); // Reads Build ID
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length > 1)
+            {
+                switch (args[1])
+                {
+                    case "-d":
+                        debugToolStripMenuItem.Visible = true;
+                        debugToolStripMenuItem.Text = "Build Timestamp: " + version;
+                        break;
+                }
+            }
+
+
+
             this.Text = language.getString(Language.StringIds.appTitle);
             fileCtxMenuToolStripMenuItem.Text = language.getString(Language.StringIds.fileCtxMenu);
             newImageBtnToolStripMenuItem.Text = language.getString(Language.StringIds.newImageBtn);
@@ -174,6 +193,19 @@ namespace UltimaISO
                 path = tCurrentDir.Text;
                 updateScreen(cd);
             }
+        }
+
+        private void aboutUltimaISOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutDialog aboutDialog = new AboutDialog();
+            aboutDialog.ShowDialog();
+        }
+
+
+        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DebugDialog debugDialog = new DebugDialog(language, version);
+            debugDialog.Show();
         }
     }
 

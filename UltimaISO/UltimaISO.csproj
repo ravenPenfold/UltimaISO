@@ -39,7 +39,7 @@
   </ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="XCOPY &quot;$(SolutionDir)res\main\&quot; &quot;$(TargetDir)\res&quot; /s /i /y" />
+	  <Exec Command="&quot;$(SolutionDir)res\BuildDateGenerator.exe&quot; &quot;$(TargetDir)buildinfo.dat&quot;&#xD;&#xA;XCOPY &quot;$(SolutionDir)res\main\&quot; &quot;$(TargetDir)res&quot; /s /i /y" />
 	</Target>
 
 </Project>

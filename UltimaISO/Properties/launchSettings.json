@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UltimaISO": {
+      "commandName": "Project",
+      "commandLineArgs": "-d"
+    }
+  }
+}
