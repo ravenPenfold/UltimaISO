@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            lStrId = new Label();
             lString = new Label();
             stringNo = new NumericUpDown();
             groupBox2 = new GroupBox();
             dialogRun = new Button();
             dialogList = new ComboBox();
             label1 = new Label();
+            sAsEditable = new SaveFileDialog();
+            sAsCompiled = new SaveFileDialog();
+            oEditable = new OpenFileDialog();
+            bCvtStrToRlx = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)stringNo).BeginInit();
             groupBox2.SuspendLayout();
@@ -42,6 +47,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lStrId);
             groupBox1.Controls.Add(lString);
             groupBox1.Controls.Add(stringNo);
             groupBox1.Location = new Point(12, 12);
@@ -51,10 +57,19 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "String Viewer";
             // 
+            // lStrId
+            // 
+            lStrId.AutoSize = true;
+            lStrId.Location = new Point(132, 24);
+            lStrId.Name = "lStrId";
+            lStrId.Size = new Size(38, 15);
+            lStrId.TabIndex = 2;
+            lStrId.Text = "label1";
+            // 
             // lString
             // 
             lString.AutoSize = true;
-            lString.Location = new Point(132, 24);
+            lString.Location = new Point(6, 48);
             lString.Name = "lString";
             lString.Size = new Size(38, 15);
             lString.TabIndex = 1;
@@ -108,11 +123,36 @@
             label1.TabIndex = 2;
             label1.Text = "label1";
             // 
+            // sAsEditable
+            // 
+            sAsEditable.Filter = "Editable Strings|*.txt";
+            sAsEditable.FileOk += sAsEditable_FileOk;
+            // 
+            // sAsCompiled
+            // 
+            sAsCompiled.Filter = "String Database|*.rlx";
+            // 
+            // oEditable
+            // 
+            oEditable.FileName = "openFileDialog1";
+            oEditable.Filter = "Editable Strings|*.txt";
+            // 
+            // bCvtStrToRlx
+            // 
+            bCvtStrToRlx.Location = new Point(509, 12);
+            bCvtStrToRlx.Name = "bCvtStrToRlx";
+            bCvtStrToRlx.Size = new Size(109, 23);
+            bCvtStrToRlx.TabIndex = 3;
+            bCvtStrToRlx.Text = "Compile RSTR";
+            bCvtStrToRlx.UseVisualStyleBackColor = true;
+            bCvtStrToRlx.Click += bCvtStrToRlx_Click;
+            // 
             // DebugDialog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(630, 450);
+            Controls.Add(bCvtStrToRlx);
             Controls.Add(label1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -136,5 +176,10 @@
         private ComboBox dialogList;
         private Button dialogRun;
         private Label label1;
+        private Label lStrId;
+        private SaveFileDialog sAsEditable;
+        private SaveFileDialog sAsCompiled;
+        private OpenFileDialog oEditable;
+        private Button bCvtStrToRlx;
     }
 }

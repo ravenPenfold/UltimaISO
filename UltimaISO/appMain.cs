@@ -1,6 +1,7 @@
 using DiscUtils.Iso9660;
 using RavenBrowser;
 using RavenDataTypes;
+using RavenDataTypes.Formats;
 using UltimaISO.Dialogs;
 
 namespace UltimaISO
@@ -9,7 +10,7 @@ namespace UltimaISO
     {
         string version;
 
-        Language language;
+        LanguageType language;
         string fileName;
         MiscTypes.DiscFormat discFormat;
         string volumeId;
@@ -33,13 +34,13 @@ namespace UltimaISO
             updateScreen(cd, "\\");
         }
 
-        public appMain(Language lang)
+        public appMain(LanguageType lang)
         {
             InitializeComponent();
             language = lang;
         }
 
-        public appMain(Language lang, string fn)
+        public appMain(LanguageType lang, string fn)
         {
             InitializeComponent();
             language = lang;
@@ -64,15 +65,15 @@ namespace UltimaISO
 
 
 
-            this.Text = language.getString(Language.StringIds.appTitle);
-            fileCtxMenuToolStripMenuItem.Text = language.getString(Language.StringIds.fileCtxMenu);
-            newImageBtnToolStripMenuItem.Text = language.getString(Language.StringIds.newImageBtn);
-            openImageBtnToolStripMenuItem.Text = language.getString(Language.StringIds.openImageBtn);
-            saveImageBtnToolStripMenuItem.Text = language.getString(Language.StringIds.saveImageBtn);
-            saveImageAsBtnToolStripMenuItem.Text = language.getString(Language.StringIds.saveImageAsBtn);
-            imagePropertiesBtnToolStripMenuItem.Text = language.getString(Language.StringIds.imagePropertiesBtn);
-            exitBtnToolStripMenuItem.Text = language.getString(Language.StringIds.exitBtn);
-            openDiscImageisoToolStripMenuItem.Text = language.getString(Language.StringIds.openIsoImage);
+            this.Text = language.getString("appTitle");
+            fileCtxMenuToolStripMenuItem.Text = language.getString("fileCtxMenu");
+            newImageBtnToolStripMenuItem.Text = language.getString("newImageBtn");
+            openImageBtnToolStripMenuItem.Text = language.getString("openImageBtn");
+            saveImageBtnToolStripMenuItem.Text = language.getString("saveImageBtn");
+            saveImageAsBtnToolStripMenuItem.Text = language.getString("saveImageAsBtn");
+            imagePropertiesBtnToolStripMenuItem.Text = language.getString("imagePropertiesBtn");
+            exitBtnToolStripMenuItem.Text = language.getString("exitBtn");
+            openDiscImageisoToolStripMenuItem.Text = language.getString("openIsoImage");
         }
 
         private void exitBtnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -108,7 +109,7 @@ namespace UltimaISO
             pBar.Maximum = 3;
             pBar.Value = 0;
             pBar.Visible = true;
-            lStatus.Text = language.getString(Language.StringIds.sbUpdatePath);
+            lStatus.Text = language.getString("sbUpdatePath");
             listView1.Clear(); // Clear ListView
 
             // Update Dirs & Path Text
@@ -117,7 +118,7 @@ namespace UltimaISO
 
             // Update Directories
             pBar.Value++;
-            lStatus.Text = language.getString(Language.StringIds.sbLoadDirectories);
+            lStatus.Text = language.getString("sbLoadDirectories");
             foreach (string d in cD.getDirectories(path))
             {
                 string n = d.Split("\\").Last();
@@ -126,7 +127,7 @@ namespace UltimaISO
 
             // Update File List
             pBar.Value++;
-            lStatus.Text = language.getString(Language.StringIds.sbLoadFiles);
+            lStatus.Text = language.getString("sbLoadFiles");
             foreach (string d in cD.getFiles(path))
             {
                 string n = d.Split("\\").Last();
@@ -134,7 +135,7 @@ namespace UltimaISO
             }
 
             pBar.Visible = false;
-            lStatus.Text = language.getString(Language.StringIds.sbFinished);
+            lStatus.Text = language.getString("sbFinished");
         }
 
         public void updateScreen(CDReader reader)
@@ -143,13 +144,13 @@ namespace UltimaISO
             pBar.Maximum = 3;
             pBar.Value = 0;
             pBar.Visible = true;
-            lStatus.Text = language.getString(Language.StringIds.sbUpdatePath);
+            lStatus.Text = language.getString("sbUpdatePath");
             listView1.Clear(); // Clear ListView
             tCurrentDir.Text = path;
 
             // Update Directories
             pBar.Value++;
-            lStatus.Text = language.getString(Language.StringIds.sbUpdatePath);
+            lStatus.Text = language.getString("sbUpdatePath");
             foreach (string d in cD.getDirectories(path))
             {
                 string n = d.Split("\\").Last();

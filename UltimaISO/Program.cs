@@ -1,4 +1,5 @@
 using RavenDataTypes;
+using RavenDataTypes.Formats;
 
 namespace UltimaISO
 {
@@ -13,7 +14,8 @@ namespace UltimaISO
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Language language = new Language(Application.StartupPath.ToString() + "res\\lang\\en_GB.rstr");
+            StandardHeader header = new StandardHeader();
+            LanguageType language = header.loadLanguage(Application.StartupPath.ToString() + "res\\lang\\en_GB.rlx"); // Load Languages
             Application.Run(new appMain(language));
 
             

@@ -1,4 +1,5 @@
 ﻿using RavenDataTypes;
+using RavenDataTypes.Formats;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +15,8 @@ namespace UltimaISO.Dialogs.Wizards
 {
     public partial class CreateNewImageDialog : Form
     {
-        Language language;
-        public CreateNewImageDialog(Language lang)
+        LanguageType language;
+        public CreateNewImageDialog(LanguageType lang)
         {
             InitializeComponent();
             language = lang;
@@ -30,21 +31,21 @@ namespace UltimaISO.Dialogs.Wizards
         {
 
             // Setup Strings
-            this.Text = language.getString(Language.StringIds.newDiscImageWizHeader);
-            lHeader.Text = language.getString(Language.StringIds.newDiscImageWizHeader);
-            lDescription.Text = language.getString(Language.StringIds.newDiscImageWizDesc);
-            btnFinish.Text = language.getString(Language.StringIds.commonFinishBtn);
-            btnCancel.Text = language.getString(Language.StringIds.commonCancelBtn);
-            gMainImageProps.Text = language.getString(Language.StringIds.cMainImageProperties);
-            lFilename.Text = language.getString(Language.StringIds.cFilename);
-            lImageType.Text = language.getString(Language.StringIds.cImageType);
-            lImageName.Text = language.getString(Language.StringIds.cImageName);
+            this.Text = language.getString("newDiscImageWizHeader");
+            lHeader.Text = language.getString("newDiscImageWizHeader");
+            lDescription.Text = language.getString("newDiscImageWizDesc");
+            btnFinish.Text = language.getString("commonFinishBtn");
+            btnCancel.Text = language.getString("commonCancelBtn");
+            gMainImageProps.Text = language.getString("cMainImageProperties");
+            lFilename.Text = language.getString("cFilename");
+            lImageType.Text = language.getString("cImageType");
+            lImageName.Text = language.getString("cImageName");
 
             // Setup strings on the Combobox
-            cImageType.Items.Add(language.getString(Language.StringIds.dTypeCd));
+            cImageType.Items.Add(language.getString("dTypeCd"));
 
             // Init Settings
-            tImageName.Text = language.getString(Language.StringIds.defaultImageName);
+            tImageName.Text = language.getString("defaultImageName");
             cImageType.SelectedIndex = 0;
         }
 
@@ -53,7 +54,7 @@ namespace UltimaISO.Dialogs.Wizards
             // Perform Validation
             if (tImageName.Text.Length == 0)
             {
-                MessageBox.Show(language.getString(Language.StringIds.eNoImageName), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(language.getString("eNoImageName"), language.getString("eImageWizardErrorCaption"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             else
@@ -62,7 +63,7 @@ namespace UltimaISO.Dialogs.Wizards
             }
             if (bFilename.Text.Length == 0)
             {
-                MessageBox.Show(language.getString(Language.StringIds.eNoImageFile), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(language.getString("eNoImageFile"), language.getString("eImageWizardErrorCaption"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             else
@@ -71,7 +72,7 @@ namespace UltimaISO.Dialogs.Wizards
             }
             if (cImageType.Text.Length == 0)
             {
-                MessageBox.Show(language.getString(Language.StringIds.eNoImageType), language.getString(Language.StringIds.eImageWizardErrorCaption), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(language.getString("eNoImageType"), language.getString("eImageWizardErrorCaption"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             else

@@ -1,4 +1,5 @@
 ﻿using RavenDataTypes;
+using RavenDataTypes.Formats;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,9 @@ namespace UltimaISO.Dialogs
 {
     public partial class DebugDialog : Form
     {
-        Language lang;
+        LanguageType lang;
         string version;
-        public DebugDialog(Language language, string ver)
+        public DebugDialog(LanguageType language, string ver)
         {
             InitializeComponent();
             lang = language;
@@ -24,7 +25,8 @@ namespace UltimaISO.Dialogs
 
         private void stringNo_ValueChanged(object sender, EventArgs e)
         {
-            lString.Text = lang.getString((int)stringNo.Value);
+            lString.Text = lang.getString((UInt32)stringNo.Value);
+            lStrId.Text = lang.getId((UInt32)stringNo.Value);
         }
 
         private void dialogRun_Click(object sender, EventArgs e)
@@ -58,6 +60,30 @@ namespace UltimaISO.Dialogs
             label1.Text = "Build ID: " + version;
             label1.Text += "\n" + "Runtime: " + Environment.Version.ToString();
             label1.Text += "\n" + "Windows Ver: " + Environment.OSVersion.ToString();
+
+            stringNo.Maximum = lang.entryInfo.noEntries - 1;
+        }
+
+
+        private void sAsEditable_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void bCvtStrToRlx_Click(object sender, EventArgs e)
+        {
+            LanguageType lt = new LanguageType();
+
+            DialogResult r = oEditable.ShowDialog();
+            if (r == DialogResult.OK)
+            {
+                DialogResult r2 = sAsCompiled.ShowDialog();
+                if (r2 == DialogResult.OK)
+                {
+                    lt.makeStringDatabase(oEditable.FileName);
+                    lt.writeDatabase(sAsCompiled.FileName);
+                }
+            }
         }
     }
 }
