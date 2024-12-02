@@ -95,18 +95,6 @@ namespace RavenDataTypes.Formats
             }
         }
 
-        public void convertOldToNew(Language l)
-        {
-            entryInfo.stringNames = new List<string>();
-            entryData.strings = new List<string>();
-
-            for (int i = 0; i < l.getNoStrings(); i++)
-            {
-                entryInfo.stringNames.Add(((Language.StringIds) i).ToString());
-                entryData.strings.Add(l.getString(i));
-            }
-        }
-
         public void outputEditable(string output)
         {
             StreamWriter w = new StreamWriter(File.Open(output, FileMode.Create));
