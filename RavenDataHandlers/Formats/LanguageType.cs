@@ -54,7 +54,7 @@ namespace RavenDataTypes.Formats
             {
                 return entryData.strings.ElementAt(entryInfo.stringNames.IndexOf(id));
             } catch (ArgumentOutOfRangeException e) {
-                return "Dummy string";
+                return id;
             }
         }
 
@@ -66,7 +66,7 @@ namespace RavenDataTypes.Formats
             }
             catch (ArgumentOutOfRangeException e)
             {
-                return "unknownId";
+                return "String #" + id;
             }
         }
 

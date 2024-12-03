@@ -58,7 +58,7 @@ namespace UltimaISO
                 {
                     case "-d":
                         debugToolStripMenuItem.Visible = true;
-                        debugToolStripMenuItem.Text = "Build Timestamp: " + version;
+                        debugToolStripMenuItem.Text = language.getString("commonBuild") + version;
                         break;
                 }
             }
