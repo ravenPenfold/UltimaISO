@@ -215,6 +215,11 @@ namespace UltimaISO
             DebugDialog debugDialog = new DebugDialog(language, version);
             debugDialog.Show();
         }
+
+        private void addFileBtnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 
 }
