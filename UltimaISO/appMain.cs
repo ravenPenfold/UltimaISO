@@ -74,6 +74,13 @@ namespace UltimaISO
             imagePropertiesBtnToolStripMenuItem.Text = language.getString("imagePropertiesBtn");
             exitBtnToolStripMenuItem.Text = language.getString("exitBtn");
             openDiscImageisoToolStripMenuItem.Text = language.getString("openIsoImage");
+
+            editCtxMenuToolStripMenuItem.Text = language.getString("editCtxMenu");
+            addFileBtnToolStripMenuItem.Text = language.getString("addFileBtn");
+            delFileBtnToolStripMenuItem.Text = language.getString("delFileBtn");
+
+            helpToolStripMenuItem.Text = language.getString("helpCtxMenu");
+            aboutUltimaISOToolStripMenuItem.Text = language.getString("aboutDialogHeader");
         }
 
         private void exitBtnToolStripMenuItem_Click(object sender, EventArgs e)

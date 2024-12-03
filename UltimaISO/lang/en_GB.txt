@@ -19,6 +19,12 @@ saveImageAsBtn = Save Disc Image As...
 imagePropertiesBtn = Disc Image Properties
 exitBtn = Exit UltimaISO
 
+editCtxMenu = Edit
+addFileBtn = Add File
+delFileBtn = Delete File
+
+helpCtxMenu = Help
+
 ; Main UI Status Label Strings
 sbLoadIso = Loading Image 
 sbLoadDirectories = Loading Directory List from 

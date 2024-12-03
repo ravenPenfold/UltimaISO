@@ -52,6 +52,9 @@
             statusStrip1 = new StatusStrip();
             pBar = new ToolStripProgressBar();
             lStatus = new ToolStripStatusLabel();
+            editCtxMenuToolStripMenuItem = new ToolStripMenuItem();
+            addFileBtnToolStripMenuItem = new ToolStripMenuItem();
+            delFileBtnToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -60,7 +63,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileCtxMenuToolStripMenuItem, helpToolStripMenuItem, debugToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileCtxMenuToolStripMenuItem, editCtxMenuToolStripMenuItem, helpToolStripMenuItem, debugToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -77,7 +80,7 @@
             // newImageBtnToolStripMenuItem
             // 
             newImageBtnToolStripMenuItem.Name = "newImageBtnToolStripMenuItem";
-            newImageBtnToolStripMenuItem.Size = new Size(178, 22);
+            newImageBtnToolStripMenuItem.Size = new Size(180, 22);
             newImageBtnToolStripMenuItem.Text = "newImageBtn";
             newImageBtnToolStripMenuItem.Click += newImageBtnToolStripMenuItem_Click;
             // 
@@ -85,7 +88,7 @@
             // 
             openImageBtnToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openDiscImageisoToolStripMenuItem });
             openImageBtnToolStripMenuItem.Name = "openImageBtnToolStripMenuItem";
-            openImageBtnToolStripMenuItem.Size = new Size(178, 22);
+            openImageBtnToolStripMenuItem.Size = new Size(180, 22);
             openImageBtnToolStripMenuItem.Text = "openImageBtn";
             // 
             // openDiscImageisoToolStripMenuItem
@@ -98,30 +101,30 @@
             // saveImageBtnToolStripMenuItem
             // 
             saveImageBtnToolStripMenuItem.Name = "saveImageBtnToolStripMenuItem";
-            saveImageBtnToolStripMenuItem.Size = new Size(178, 22);
+            saveImageBtnToolStripMenuItem.Size = new Size(180, 22);
             saveImageBtnToolStripMenuItem.Text = "saveImageBtn";
             // 
             // saveImageAsBtnToolStripMenuItem
             // 
             saveImageAsBtnToolStripMenuItem.Name = "saveImageAsBtnToolStripMenuItem";
-            saveImageAsBtnToolStripMenuItem.Size = new Size(178, 22);
+            saveImageAsBtnToolStripMenuItem.Size = new Size(180, 22);
             saveImageAsBtnToolStripMenuItem.Text = "saveImageAsBtn";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(175, 6);
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // imagePropertiesBtnToolStripMenuItem
             // 
             imagePropertiesBtnToolStripMenuItem.Name = "imagePropertiesBtnToolStripMenuItem";
-            imagePropertiesBtnToolStripMenuItem.Size = new Size(178, 22);
+            imagePropertiesBtnToolStripMenuItem.Size = new Size(180, 22);
             imagePropertiesBtnToolStripMenuItem.Text = "imagePropertiesBtn";
             // 
             // exitBtnToolStripMenuItem
             // 
             exitBtnToolStripMenuItem.Name = "exitBtnToolStripMenuItem";
-            exitBtnToolStripMenuItem.Size = new Size(178, 22);
+            exitBtnToolStripMenuItem.Size = new Size(180, 22);
             exitBtnToolStripMenuItem.Text = "exitBtn";
             exitBtnToolStripMenuItem.Click += exitBtnToolStripMenuItem_Click;
             // 
@@ -135,7 +138,7 @@
             // aboutUltimaISOToolStripMenuItem
             // 
             aboutUltimaISOToolStripMenuItem.Name = "aboutUltimaISOToolStripMenuItem";
-            aboutUltimaISOToolStripMenuItem.Size = new Size(163, 22);
+            aboutUltimaISOToolStripMenuItem.Size = new Size(180, 22);
             aboutUltimaISOToolStripMenuItem.Text = "About UltimaISO";
             aboutUltimaISOToolStripMenuItem.Click += aboutUltimaISOToolStripMenuItem_Click;
             // 
@@ -220,6 +223,25 @@
             lStatus.Size = new Size(118, 17);
             lStatus.Text = "toolStripStatusLabel1";
             // 
+            // editCtxMenuToolStripMenuItem
+            // 
+            editCtxMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addFileBtnToolStripMenuItem, delFileBtnToolStripMenuItem });
+            editCtxMenuToolStripMenuItem.Name = "editCtxMenuToolStripMenuItem";
+            editCtxMenuToolStripMenuItem.Size = new Size(87, 20);
+            editCtxMenuToolStripMenuItem.Text = "editCtxMenu";
+            // 
+            // addFileBtnToolStripMenuItem
+            // 
+            addFileBtnToolStripMenuItem.Name = "addFileBtnToolStripMenuItem";
+            addFileBtnToolStripMenuItem.Size = new Size(180, 22);
+            addFileBtnToolStripMenuItem.Text = "addFileBtn";
+            // 
+            // delFileBtnToolStripMenuItem
+            // 
+            delFileBtnToolStripMenuItem.Name = "delFileBtnToolStripMenuItem";
+            delFileBtnToolStripMenuItem.Size = new Size(180, 22);
+            delFileBtnToolStripMenuItem.Text = "delFileBtn";
+            // 
             // appMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -268,5 +290,8 @@
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutUltimaISOToolStripMenuItem;
         private ToolStripMenuItem debugToolStripMenuItem;
+        private ToolStripMenuItem editCtxMenuToolStripMenuItem;
+        private ToolStripMenuItem addFileBtnToolStripMenuItem;
+        private ToolStripMenuItem delFileBtnToolStripMenuItem;
     }
 }
