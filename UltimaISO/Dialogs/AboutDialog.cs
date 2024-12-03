@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RavenDataTypes.Formats;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,25 @@ namespace UltimaISO.Dialogs
 {
     public partial class AboutDialog : Form
     {
-        public AboutDialog()
+        LanguageType lt = new LanguageType();
+        string ver;
+        public AboutDialog(LanguageType l, string version)
         {
             InitializeComponent();
+            lt = l;
+            ver = version;
         }
 
         private void AboutDialog_Load(object sender, EventArgs e)
         {
-            StreamReader sr = new StreamReader(Application.StartupPath + "buildinfo.dat");
-            lPrototype.Text = "Testing copy - " + sr.ReadToEnd();
+            this.Text = lt.getString("aboutDialogHeader");
+
+            lTitle.Text = lt.getString("versionNo");
+            lVersionInfo.Text = lt.getString("commonBuild") + ver;
+            bOk.Text = lt.getString("commonOk");
+            lAcknowledgements.Text = lt.getString("creditsTag");
+            lLicenseTag.Text = lt.getString("licenseTag");
+            lCopyright.Text = lt.getString("copyright");
         }
 
         private void bOk_Click(object sender, EventArgs e)

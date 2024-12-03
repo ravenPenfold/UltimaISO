@@ -3,7 +3,9 @@ languageName = English (GB)
 
 ; Common Strings
 appTitle = UltimaISO
+versionNo = UltimaISO 0.1 
 commonBuild = Build 
+commonOk = Ok
 commonCancelBtn = Cancel
 commonFinishBtn = Finish
 
@@ -26,8 +28,9 @@ sbUpdatePath = Hello World
 
 ; About Dialog Strings
 aboutDialogHeader = About UltimaISO
-licenseMessage = UltimaISO is licensed under the MIT License
-licenseTag = You can read the license above
+copyright = UltimaISO is licensed under the MIT License
+licenseTag = License
+creditsTag = Credits
 
 ; Image Creation Wizard Strings
 newDiscImageWizHeader = Create a Disc Image

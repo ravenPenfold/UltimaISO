@@ -35,7 +35,7 @@ namespace UltimaISO.Dialogs
             switch (dialogList.SelectedIndex)
             {
                 case 0:
-                    AboutDialog aboutWin = new AboutDialog();
+                    AboutDialog aboutWin = new AboutDialog(lang, version);
                     aboutWin.Show();
                     break;
 

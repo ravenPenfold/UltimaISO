@@ -198,7 +198,7 @@ namespace UltimaISO
 
         private void aboutUltimaISOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutDialog aboutDialog = new AboutDialog();
+            AboutDialog aboutDialog = new AboutDialog(language, version);
             aboutDialog.ShowDialog();
         }
 
