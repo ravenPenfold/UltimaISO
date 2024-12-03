@@ -24,6 +24,7 @@ addFileBtn = Add File
 delFileBtn = Delete File
 
 helpCtxMenu = Help
+helpBtn = Help Topics
 
 ; Main UI Status Label Strings
 sbLoadIso = Loading Image 

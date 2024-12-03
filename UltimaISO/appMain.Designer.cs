@@ -55,6 +55,7 @@
             statusStrip1 = new StatusStrip();
             pBar = new ToolStripProgressBar();
             lStatus = new ToolStripStatusLabel();
+            helpBtnToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -138,19 +139,19 @@
             // addFileBtnToolStripMenuItem
             // 
             addFileBtnToolStripMenuItem.Name = "addFileBtnToolStripMenuItem";
-            addFileBtnToolStripMenuItem.Size = new Size(180, 22);
+            addFileBtnToolStripMenuItem.Size = new Size(130, 22);
             addFileBtnToolStripMenuItem.Text = "addFileBtn";
             addFileBtnToolStripMenuItem.Click += addFileBtnToolStripMenuItem_Click;
             // 
             // delFileBtnToolStripMenuItem
             // 
             delFileBtnToolStripMenuItem.Name = "delFileBtnToolStripMenuItem";
-            delFileBtnToolStripMenuItem.Size = new Size(180, 22);
+            delFileBtnToolStripMenuItem.Size = new Size(130, 22);
             delFileBtnToolStripMenuItem.Text = "delFileBtn";
             // 
             // helpToolStripMenuItem
             // 
-            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutUltimaISOToolStripMenuItem });
+            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutUltimaISOToolStripMenuItem, helpBtnToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             helpToolStripMenuItem.Size = new Size(44, 20);
             helpToolStripMenuItem.Text = "Help";
@@ -158,7 +159,7 @@
             // aboutUltimaISOToolStripMenuItem
             // 
             aboutUltimaISOToolStripMenuItem.Name = "aboutUltimaISOToolStripMenuItem";
-            aboutUltimaISOToolStripMenuItem.Size = new Size(163, 22);
+            aboutUltimaISOToolStripMenuItem.Size = new Size(180, 22);
             aboutUltimaISOToolStripMenuItem.Text = "About UltimaISO";
             aboutUltimaISOToolStripMenuItem.Click += aboutUltimaISOToolStripMenuItem_Click;
             // 
@@ -167,6 +168,7 @@
             debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             debugToolStripMenuItem.Size = new Size(54, 20);
             debugToolStripMenuItem.Text = "Debug";
+            debugToolStripMenuItem.Visible = false;
             debugToolStripMenuItem.Click += debugToolStripMenuItem_Click;
             // 
             // listView1
@@ -243,6 +245,12 @@
             lStatus.Size = new Size(118, 17);
             lStatus.Text = "toolStripStatusLabel1";
             // 
+            // helpBtnToolStripMenuItem
+            // 
+            helpBtnToolStripMenuItem.Name = "helpBtnToolStripMenuItem";
+            helpBtnToolStripMenuItem.Size = new Size(180, 22);
+            helpBtnToolStripMenuItem.Text = "helpBtn";
+            // 
             // appMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -294,5 +302,6 @@
         private ToolStripMenuItem editCtxMenuToolStripMenuItem;
         private ToolStripMenuItem addFileBtnToolStripMenuItem;
         private ToolStripMenuItem delFileBtnToolStripMenuItem;
+        private ToolStripMenuItem helpBtnToolStripMenuItem;
     }
 }

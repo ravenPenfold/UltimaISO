@@ -80,6 +80,7 @@ namespace UltimaISO
             delFileBtnToolStripMenuItem.Text = language.getString("delFileBtn");
 
             helpToolStripMenuItem.Text = language.getString("helpCtxMenu");
+            helpBtnToolStripMenuItem.Text = language.getString("helpBtn");
             aboutUltimaISOToolStripMenuItem.Text = language.getString("aboutDialogHeader");
         }
 
