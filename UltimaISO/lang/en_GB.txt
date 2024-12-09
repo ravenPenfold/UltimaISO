@@ -10,28 +10,28 @@ commonCancelBtn = Cancel
 commonFinishBtn = Finish
 
 ; Main UI Control Strings
-fileCtxMenu = File
-newImageBtn = New Disc Image
-openImageBtn = Open Disc Image
-openIsoImage = Open CD Disc Image (*.iso)
-saveImageBtn = Save Disc Image
-saveImageAsBtn = Save Disc Image As...
-imagePropertiesBtn = Disc Image Properties
-exitBtn = Exit UltimaISO
+btnMenuMain = Main Menu
 
-editCtxMenu = Edit
-addFileBtn = Add File
-delFileBtn = Delete File
+btnNewImage = Create a Disc Image
+bdNewImage = Creates a new Disc Image using the New Disc Image wizard
 
-helpCtxMenu = Help
-helpBtn = Help Topics
+btnOpenImage = Open a Disc Image
+bdOpenImage = Opens a Disc Image after you select one
 
-; Main UI Status Label Strings
-sbLoadIso = Loading Image 
-sbLoadDirectories = Loading Directory List from 
-sbLoadFiles = Loading File List from 
-sbFinished = Finished
-sbUpdatePath = Hello World
+btnSaveImage = Save Disc Image
+bdSaveImage = Saves the current Disc Image
+
+btnSaveImageAs = Save Disc Image As...
+bdSaveImageAs = Saves the current Disc Image in a different file
+
+btnImageProperties = Image Properties
+bdImageProperties = Edit the Image Information, such as it's Volume Identifier
+
+btnAbout = About UltimaISO
+btnSettings = UltimaISO Settings
+btnExit = Exit UltimaISO
+
+debugMode = UltimaISO is running in Debug Mode - 
 
 ; About Dialog Strings
 aboutDialogHeader = About UltimaISO

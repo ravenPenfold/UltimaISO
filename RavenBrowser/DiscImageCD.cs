@@ -14,7 +14,7 @@ namespace RavenBrowser
         {
             /// <summary>Create constructor for DiscImageCD</summary>
             build = new CDBuilder();
-            reader = new CDReader(File.OpenRead(p), true);
+            // 
             imagePath = p;
         }
 
@@ -22,6 +22,7 @@ namespace RavenBrowser
         public List<string> getDirectories(string path)
         {
             /// <summary>Returns a list of Directories in a certain path</summary>
+            reader = new CDReader(File.OpenRead(imagePath), true);
             List<string> dirs = new List<string>();
 
             foreach (string d in reader.GetDirectories(path))
@@ -36,10 +37,12 @@ namespace RavenBrowser
         public List<string> getFiles(string path)
         {
             /// <summary>Returns a list of Files in a certain path</summary>
+            reader = new CDReader(File.OpenRead(imagePath), true);
             List<string> files = new List<string>();
             foreach (string d in reader.GetFiles(path))
             {
                 string n = d.Split("\\").Last();
+                n = n.Split(";").First();
                 files.Add(n);
             }
             return files;
@@ -73,6 +76,16 @@ namespace RavenBrowser
                     break;
             }
             return s;
+        }
+
+        public void AddFile(string path, string inFile)
+        {
+            reader.Dispose();
+            build = new CDBuilder();
+            build.UseJoliet = true;
+            build.AddFile(path + inFile.Split("\\").Last(), inFile);
+            build.Build(imagePath + ".tmp");
+            reader = new CDReader(File.OpenRead(imagePath), true);
         }
 
 

@@ -2,6 +2,7 @@ using DiscUtils.Iso9660;
 using RavenBrowser;
 using RavenDataTypes;
 using RavenDataTypes.Formats;
+using System.Media;
 using UltimaISO.Dialogs;
 
 namespace UltimaISO
@@ -10,7 +11,7 @@ namespace UltimaISO
     {
         string version;
 
-        LanguageType language;
+        LanguageType l;
         string fileName;
         MiscTypes.DiscFormat discFormat;
         string volumeId;
@@ -28,70 +29,136 @@ namespace UltimaISO
         // Functions used during Runtime
         private void loadIso()
         {
-            cd = new CDReader(File.OpenRead(fileName), true);
+            // cd = new CDReader(File.OpenRead(fileName), true);
             path = "";
             cD = new DiscImageCD(fileName);
-            updateScreen(cd, "\\");
+            updateScreen("\\");
         }
 
         public appMain(LanguageType lang)
         {
             InitializeComponent();
-            language = lang;
+            l = lang;
         }
 
         public appMain(LanguageType lang, string fn)
         {
             InitializeComponent();
-            language = lang;
+            l = lang;
             fileName = fn;
         }
 
         private void appMain_Load(object sender, EventArgs e)
         {
             StreamReader sr = new StreamReader(Application.StartupPath + "buildinfo.dat");
+
             version = sr.ReadToEnd(); // Reads Build ID
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
-                switch (args[1])
+                foreach (string arg in args)
                 {
-                    case "-d":
-                        debugToolStripMenuItem.Visible = true;
-                        debugToolStripMenuItem.Text = language.getString("commonBuild") + version;
-                        break;
+                    switch (arg)
+                    {
+                        case "-d":
+                            lBuild.Visible = true;
+                            lBuild.Text = l.getString("debugMode") + l.getString("commonBuild") + version;
+                            break;
+
+                        case "-ss":
+                            l = new LanguageType();
+                            l.entryData.strings = new List<string>();
+                            l.entryInfo.stringNames = new List<string>();
+                            break;
+                    }
                 }
             }
 
-
-
-            this.Text = language.getString("appTitle");
-            fileCtxMenuToolStripMenuItem.Text = language.getString("fileCtxMenu");
-            newImageBtnToolStripMenuItem.Text = language.getString("newImageBtn");
-            openImageBtnToolStripMenuItem.Text = language.getString("openImageBtn");
-            saveImageBtnToolStripMenuItem.Text = language.getString("saveImageBtn");
-            saveImageAsBtnToolStripMenuItem.Text = language.getString("saveImageAsBtn");
-            imagePropertiesBtnToolStripMenuItem.Text = language.getString("imagePropertiesBtn");
-            exitBtnToolStripMenuItem.Text = language.getString("exitBtn");
-            openDiscImageisoToolStripMenuItem.Text = language.getString("openIsoImage");
-
-            editCtxMenuToolStripMenuItem.Text = language.getString("editCtxMenu");
-            addFileBtnToolStripMenuItem.Text = language.getString("addFileBtn");
-            delFileBtnToolStripMenuItem.Text = language.getString("delFileBtn");
-
-            helpToolStripMenuItem.Text = language.getString("helpCtxMenu");
-            helpBtnToolStripMenuItem.Text = language.getString("helpBtn");
-            aboutUltimaISOToolStripMenuItem.Text = language.getString("aboutDialogHeader");
+            // Load in Strings
+            this.Text = l.getString("appTitle");
+            bNewImage.Text = l.getString("btnNewImage");
+            bOpenImage.Text = l.getString("btnOpenImage");
+            bSaveImage.Text = l.getString("btnSaveImage");
+            bSaveImageAs.Text = l.getString("btnSaveImageAs");
+            bImageProperties.Text = l.getString("btnImageProperties");
         }
 
-        private void exitBtnToolStripMenuItem_Click(object sender, EventArgs e)
+
+        public void updateScreen(string nPath)
         {
-            Application.Exit();
+            // Status Setup
+            listView1.Clear(); // Clear ListView
+
+            // Update Dirs & Path Text
+            path = cD.updateDir(nPath, path);
+
+            // Update Directories
+            foreach (string d in cD.getDirectories(path))
+            {
+                string n = d.Split("\\").Last();
+                listView1.Items.Add(n, 0);
+            }
+
+            // Update File List
+            foreach (string d in cD.getFiles(path))
+            {
+                string n = d.Split("\\").Last();
+                listView1.Items.Add(n, 1);
+            }
         }
 
-        private void newImageBtnToolStripMenuItem_Click(object sender, EventArgs e)
+        public void updateScreen()
         {
-            Dialogs.Wizards.CreateNewImageDialog createNewImageDialog = new Dialogs.Wizards.CreateNewImageDialog(language);
+            // Status Setup
+            listView1.Clear(); // Clear ListView
+            // tCurrentDir.Text = path;
+
+            // Update Directories
+            foreach (string d in cD.getDirectories(path))
+            {
+                string n = d.Split("\\").Last();
+                listView1.Items.Add(n, 0);
+            }
+            foreach (string d in cD.getFiles(path))
+            {
+                string n = d.Split("\\").Last();
+                listView1.Items.Add(n, 1);
+            }
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems[0].ImageIndex == 0)
+            {
+                updateScreen(listView1.SelectedItems[0].Text);
+            }
+        }
+
+        private void bMenu_Click(object sender, EventArgs e)
+        {
+            if (pMenu.Visible == true)
+            {
+                pMenu.Visible = false;
+            }
+            else
+            {
+                pMenu.Visible = true;
+            }
+        }
+
+        private void bMenu_MouseHover(object sender, EventArgs e)
+        {
+            tTip.SetToolTip(bMenu, l.getString("btnMenuMain"));
+        }
+
+        private void bNewImage_MouseHover(object sender, EventArgs e)
+        {
+            tTip.SetToolTip(bNewImage, l.getString("bdNewImage"));
+        }
+
+        private void bNewImage_Click(object sender, EventArgs e)
+        {
+            Dialogs.Wizards.CreateNewImageDialog createNewImageDialog = new Dialogs.Wizards.CreateNewImageDialog(l);
 
             createNewImageDialog.ShowDialog();
 
@@ -110,117 +177,37 @@ namespace UltimaISO
             }
         }
 
-
-        public void updateScreen(CDReader reader, string nPath)
+        private void bOpenImage_MouseHover(object sender, EventArgs e)
         {
-            // Status Setup
-            pBar.Maximum = 3;
-            pBar.Value = 0;
-            pBar.Visible = true;
-            lStatus.Text = language.getString("sbUpdatePath");
-            listView1.Clear(); // Clear ListView
-
-            // Update Dirs & Path Text
-            path = cD.updateDir(nPath, path);
-            tCurrentDir.Text = path;
-
-            // Update Directories
-            pBar.Value++;
-            lStatus.Text = language.getString("sbLoadDirectories");
-            foreach (string d in cD.getDirectories(path))
-            {
-                string n = d.Split("\\").Last();
-                listView1.Items.Add(n, 0);
-            }
-
-            // Update File List
-            pBar.Value++;
-            lStatus.Text = language.getString("sbLoadFiles");
-            foreach (string d in cD.getFiles(path))
-            {
-                string n = d.Split("\\").Last();
-                listView1.Items.Add(n, 1);
-            }
-
-            pBar.Visible = false;
-            lStatus.Text = language.getString("sbFinished");
+            tTip.SetToolTip(bOpenImage, l.getString("bdOpenImage"));
         }
 
-        public void updateScreen(CDReader reader)
+        private void bOpenImage_Click(object sender, EventArgs e)
         {
-            // Status Setup
-            pBar.Maximum = 3;
-            pBar.Value = 0;
-            pBar.Visible = true;
-            lStatus.Text = language.getString("sbUpdatePath");
-            listView1.Clear(); // Clear ListView
-            tCurrentDir.Text = path;
+            OpenFileDialog d = new OpenFileDialog();
+            d.Filter = l.getString("dTypeCd") + "|*.iso";
 
-            // Update Directories
-            pBar.Value++;
-            lStatus.Text = language.getString("sbUpdatePath");
-            foreach (string d in cD.getDirectories(path))
-            {
-                string n = d.Split("\\").Last();
-                listView1.Items.Add(n, 0);
-            }
-            foreach (string d in cD.getFiles(path))
-            {
-                string n = d.Split("\\").Last();
-                listView1.Items.Add(n, 1);
-            }
-        }
-
-        private void openDiscImageisoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult r = openIso.ShowDialog();
-
+            DialogResult r = d.ShowDialog();
             if (r == DialogResult.OK)
             {
-                fileName = openIso.FileName;
-                loadIso();
+                cD = new DiscImageCD(d.FileNames.First());
+                updateScreen("\\");
             }
         }
 
-        private void listView1_DoubleClick(object sender, EventArgs e)
+        private void lBuild_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (listView1.SelectedItems[0].ImageIndex == 0)
-            {
-                updateScreen(cd, listView1.SelectedItems[0].Text);
-            }
+            new DebugDialog(l, version).Show();
         }
 
-        private void bUpOneFolder_Click(object sender, EventArgs e)
-        {
-            updateScreen(cd, "..");
-        }
-
-        private void tCurrentDir_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        /* private void tCurrentDir_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 path = tCurrentDir.Text;
                 updateScreen(cd);
             }
-        }
-
-        private void aboutUltimaISOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutDialog aboutDialog = new AboutDialog(language, version);
-            aboutDialog.ShowDialog();
-        }
-
-
-        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DebugDialog debugDialog = new DebugDialog(language, version);
-            debugDialog.Show();
-        }
-
-        private void addFileBtnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
+        } */
     }
 
 }

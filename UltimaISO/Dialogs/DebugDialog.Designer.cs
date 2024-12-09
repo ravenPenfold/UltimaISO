@@ -40,6 +40,7 @@
             sAsCompiled = new SaveFileDialog();
             oEditable = new OpenFileDialog();
             bCvtStrToRlx = new Button();
+            bThrow = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)stringNo).BeginInit();
             groupBox2.SuspendLayout();
@@ -147,11 +148,22 @@
             bCvtStrToRlx.UseVisualStyleBackColor = true;
             bCvtStrToRlx.Click += bCvtStrToRlx_Click;
             // 
+            // bThrow
+            // 
+            bThrow.Location = new Point(509, 41);
+            bThrow.Name = "bThrow";
+            bThrow.Size = new Size(109, 23);
+            bThrow.TabIndex = 4;
+            bThrow.Text = "Throw Exception";
+            bThrow.UseVisualStyleBackColor = true;
+            bThrow.Click += bThrow_Click;
+            // 
             // DebugDialog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(630, 450);
+            Controls.Add(bThrow);
             Controls.Add(bCvtStrToRlx);
             Controls.Add(label1);
             Controls.Add(groupBox2);
@@ -181,5 +193,6 @@
         private SaveFileDialog sAsCompiled;
         private OpenFileDialog oEditable;
         private Button bCvtStrToRlx;
+        private Button bThrow;
     }
 }
