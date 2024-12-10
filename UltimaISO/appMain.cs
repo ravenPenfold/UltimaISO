@@ -200,6 +200,16 @@ namespace UltimaISO
             new DebugDialog(l, version).Show();
         }
 
+        private void bExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void bAbout_Click_1(object sender, EventArgs e)
+        {
+            new AboutDialog(l, version).ShowDialog();
+        }
+
         /* private void tCurrentDir_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

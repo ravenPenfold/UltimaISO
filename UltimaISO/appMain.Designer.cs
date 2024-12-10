@@ -35,6 +35,7 @@
             pMain = new Panel();
             tUrl = new TextBox();
             bMenu = new Button();
+            iGuiSmall = new ImageList(components);
             pMenu = new Panel();
             lBuild = new LinkLabel();
             pMenuBottom = new Panel();
@@ -101,14 +102,25 @@
             bMenu.Dock = DockStyle.Right;
             bMenu.FlatAppearance.BorderSize = 0;
             bMenu.FlatStyle = FlatStyle.Flat;
+            bMenu.ImageIndex = 0;
+            bMenu.ImageList = iGuiSmall;
             bMenu.Location = new Point(710, 0);
             bMenu.Name = "bMenu";
             bMenu.Size = new Size(90, 100);
             bMenu.TabIndex = 0;
-            bMenu.Text = "bMenu";
             bMenu.UseVisualStyleBackColor = false;
             bMenu.Click += bMenu_Click;
             bMenu.MouseHover += bMenu_MouseHover;
+            // 
+            // iGuiSmall
+            // 
+            iGuiSmall.ColorDepth = ColorDepth.Depth32Bit;
+            iGuiSmall.ImageStream = (ImageListStreamer)resources.GetObject("iGuiSmall.ImageStream");
+            iGuiSmall.TransparentColor = Color.Transparent;
+            iGuiSmall.Images.SetKeyName(0, "menu_32dp_E8EAED.png");
+            iGuiSmall.Images.SetKeyName(1, "info_32dp_E8EAED.png");
+            iGuiSmall.Images.SetKeyName(2, "logout_32dp_E8EAED.png");
+            iGuiSmall.Images.SetKeyName(3, "settings_32dp_E8EAED.png");
             // 
             // pMenu
             // 
@@ -158,13 +170,15 @@
             bExit.FlatAppearance.BorderSize = 0;
             bExit.FlatStyle = FlatStyle.Flat;
             bExit.Font = new Font("Segoe UI", 12F);
+            bExit.ImageKey = "logout_32dp_E8EAED.png";
+            bExit.ImageList = iGuiSmall;
             bExit.Location = new Point(196, 0);
             bExit.Name = "bExit";
             bExit.Size = new Size(98, 100);
             bExit.TabIndex = 4;
-            bExit.Text = "bExit";
             bExit.TextAlign = ContentAlignment.MiddleRight;
             bExit.UseVisualStyleBackColor = false;
+            bExit.Click += bExit_Click;
             // 
             // bSettings
             // 
@@ -173,11 +187,12 @@
             bSettings.FlatAppearance.BorderSize = 0;
             bSettings.FlatStyle = FlatStyle.Flat;
             bSettings.Font = new Font("Segoe UI", 12F);
+            bSettings.ImageKey = "settings_32dp_E8EAED.png";
+            bSettings.ImageList = iGuiSmall;
             bSettings.Location = new Point(98, 0);
             bSettings.Name = "bSettings";
             bSettings.Size = new Size(98, 100);
             bSettings.TabIndex = 3;
-            bSettings.Text = "bSettings";
             bSettings.TextAlign = ContentAlignment.MiddleRight;
             bSettings.UseVisualStyleBackColor = false;
             // 
@@ -188,13 +203,15 @@
             bAbout.FlatAppearance.BorderSize = 0;
             bAbout.FlatStyle = FlatStyle.Flat;
             bAbout.Font = new Font("Segoe UI", 12F);
+            bAbout.ImageIndex = 1;
+            bAbout.ImageList = iGuiSmall;
             bAbout.Location = new Point(0, 0);
             bAbout.Name = "bAbout";
             bAbout.Size = new Size(98, 100);
             bAbout.TabIndex = 2;
-            bAbout.Text = "bAbout";
             bAbout.TextAlign = ContentAlignment.MiddleRight;
             bAbout.UseVisualStyleBackColor = false;
+            bAbout.Click += bAbout_Click_1;
             // 
             // bImageProperties
             // 
@@ -265,6 +282,7 @@
             bNewImage.FlatAppearance.BorderSize = 0;
             bNewImage.FlatStyle = FlatStyle.Flat;
             bNewImage.Font = new Font("Segoe UI", 12F);
+            bNewImage.ImageAlign = ContentAlignment.MiddleLeft;
             bNewImage.Location = new Point(0, 0);
             bNewImage.Name = "bNewImage";
             bNewImage.Size = new Size(297, 54);
@@ -314,5 +332,6 @@
         private Button bSettings;
         private Button bAbout;
         private LinkLabel lBuild;
+        private ImageList iGuiSmall;
     }
 }
