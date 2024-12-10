@@ -8,6 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject></StartupObject>
     <ApplicationIcon>ultimaiso.ico</ApplicationIcon>
+    <Version>1.0.0.0</Version>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+	<Deterministic>false</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,7 +43,7 @@
   </ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="&quot;$(SolutionDir)res\tools\BuildDateGenerator.exe&quot; &quot;$(TargetDir)buildinfo.dat&quot;&#xD;&#xA;&quot;$(SolutionDir)res\tools\StringCompiler.exe&quot;&#xD;&#xA;XCOPY &quot;$(ProjectDir)res\&quot; &quot;$(TargetDir)res&quot; /s /i /y" />
+	  <Exec Command="&quot;$(SolutionDir)res\tools\StringCompiler.exe&quot;&#xD;&#xA;XCOPY &quot;$(ProjectDir)res\&quot; &quot;$(TargetDir)res&quot; /s /i /y" />
 	</Target>
 
 </Project>

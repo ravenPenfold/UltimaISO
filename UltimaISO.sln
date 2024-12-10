@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltimaISO Setup", "UltimaIS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenBrowser", "RavenBrowser\RavenBrowser.csproj", "{CA42A202-48D9-45B8-8729-E779C1545DB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildDateGenerator", "BuildDateGenerator\BuildDateGenerator.csproj", "{837E62D0-55D2-40D5-B50D-50EA675594A0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCompiler", "StringCompiler\StringCompiler.csproj", "{39547BE4-992B-4DA6-AACC-BFB8B39C1088}"
 EndProject
 Global
@@ -49,10 +47,6 @@ Global
 		{CA42A202-48D9-45B8-8729-E779C1545DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA42A202-48D9-45B8-8729-E779C1545DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA42A202-48D9-45B8-8729-E779C1545DB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{837E62D0-55D2-40D5-B50D-50EA675594A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{837E62D0-55D2-40D5-B50D-50EA675594A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{837E62D0-55D2-40D5-B50D-50EA675594A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{837E62D0-55D2-40D5-B50D-50EA675594A0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39547BE4-992B-4DA6-AACC-BFB8B39C1088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39547BE4-992B-4DA6-AACC-BFB8B39C1088}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39547BE4-992B-4DA6-AACC-BFB8B39C1088}.Release|Any CPU.ActiveCfg = Release|Any CPU

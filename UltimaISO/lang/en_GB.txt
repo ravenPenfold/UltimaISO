@@ -3,8 +3,8 @@ languageName = English (GB)
 
 ; Common Strings
 appTitle = UltimaISO
-versionNo = UltimaISO 0.1 
-commonBuild = Build 
+; versionNo = UltimaISO 0.1 
+commonBuild = Version  
 commonOk = Ok
 commonCancelBtn = Cancel
 commonFinishBtn = Finish
@@ -31,7 +31,7 @@ btnAbout = About UltimaISO
 btnSettings = UltimaISO Settings
 btnExit = Exit UltimaISO
 
-debugMode = UltimaISO is running in Debug Mode - 
+debugMode = Debug Mode: 
 
 ; About Dialog Strings
 aboutDialogHeader = About UltimaISO
@@ -41,7 +41,7 @@ creditsTag = Credits
 
 ; Image Creation Wizard Strings
 newDiscImageWizHeader = Create a Disc Image
-newDiscImageWizDesc = This wizard will help you create a Disc Image...
+newDiscImageWizDesc = Overhaul
 cMainImageProperties = Common Properties
 cFilename = Filename:
 cImageType = Image Type:

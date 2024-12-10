@@ -3,6 +3,7 @@ using RavenBrowser;
 using RavenDataTypes;
 using RavenDataTypes.Formats;
 using System.Media;
+using System.Reflection;
 using UltimaISO.Dialogs;
 
 namespace UltimaISO
@@ -49,10 +50,12 @@ namespace UltimaISO
         }
 
         private void appMain_Load(object sender, EventArgs e)
-        {
-            StreamReader sr = new StreamReader(Application.StartupPath + "buildinfo.dat");
+        { 
 
-            version = sr.ReadToEnd(); // Reads Build ID
+            version = Assembly.GetExecutingAssembly().GetName().Version.ToString(); ; // Reads Version
+
+            
+
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
